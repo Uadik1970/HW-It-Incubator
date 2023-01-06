@@ -1,4 +1,4 @@
-import Avatar from '../../../avatar/Avatar.jpg'
+import Avatar from '../avatar.png'
 import React from 'react'
 import s from './Message.module.css'
 import { MessageTypeForMessage0, UserType } from '../HW1'
