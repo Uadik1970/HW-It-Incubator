@@ -11,6 +11,8 @@ import s from './HW7.module.css'
 * 4 - сделать стили в соответствии с дизайном
 * */
 
+
+
 const arr = [
     { id: 1, value: 'x' },
     { id: 2, value: 'y' },
@@ -19,6 +21,8 @@ const arr = [
 
 const HW7 = () => {
     const [value, onChangeOption] = useState(1) // селект и радио должны работать синхронно
+
+
 
     return (
         <div id={'hw7'}>
