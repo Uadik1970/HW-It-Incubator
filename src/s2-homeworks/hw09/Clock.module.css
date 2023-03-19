@@ -11,8 +11,5 @@
 }
 
 .more {
-    color: aqua;
-}
-.more :hover {
-    color: brown;
+    color: black;
 }
