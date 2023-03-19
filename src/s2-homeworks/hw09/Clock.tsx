@@ -42,17 +42,24 @@ function Clock() {
     // const stringDate = `${date.getDay()}:${date.getMonth()}: ${date.getFullYear()}` || <br /> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
 
     // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
-    const stringTime = date.toLocaleTimeString() || <br />
-    const stringDate = date.toLocaleDateString() || <br />
+    const stringTime = date.toLocaleTimeString('ru-Ru') || <br />
+    // const stringDate = date.toLocaleDateString() || <br />
+    const stringDate = date.toLocaleDateString('ru-Ru') || <br />
 
-    let formater1 = new Intl.DateTimeFormat("en", {
+    console.log(stringTime);
 
+    let formater1 = new Intl.DateTimeFormat("ru-Ru", {
         weekday: "long",
     });
-    let formater2 = new Intl.DateTimeFormat("en", {
+    let formater2 = new Intl.DateTimeFormat("ru-Ru", {
         month: "long",
-
     });
+    let formater3 = new Intl.DateTimeFormat("en", {
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric"
+    });
+
 
     const stringDay = formater1.format(date) || <br /> // пишут студенты
     const stringMonth = formater2.format(date) || <br /> // пишут студенты
