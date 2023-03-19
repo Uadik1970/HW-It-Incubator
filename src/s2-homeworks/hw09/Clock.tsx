@@ -42,8 +42,8 @@ function Clock() {
     // const stringDate = `${date.getDay()}:${date.getMonth()}: ${date.getFullYear()}` || <br /> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
 
     // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
-    const stringTime = `${date.toTimeString()}` || <br />
-    const stringDate = `${date.toDateString()}` || <br />
+    const stringTime = date.toLocaleTimeString() || <br />
+    const stringDate = date.toLocaleDateString() || <br />
 
     let formater1 = new Intl.DateTimeFormat("en", {
 
