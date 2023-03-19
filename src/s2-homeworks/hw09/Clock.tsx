@@ -44,11 +44,11 @@ function Clock() {
     // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
     const stringTime = date.toLocaleTimeString('ru-Ru') || <br />
     // const stringDate = date.toLocaleDateString() || <br />
-    const stringDate = date.toLocaleDateString('ru-Ru') || <br />
+    const stringDate = date.toLocaleDateString('ru-Ru') || <br />//'ru-Ru'
 
     console.log(stringTime);
 
-    let formater1 = new Intl.DateTimeFormat("en-US", {
+    let formater1 = new Intl.DateTimeFormat("en-US", { //"en-US"
         weekday: "long",
     });
     let formater2 = new Intl.DateTimeFormat("en-US", {
