@@ -48,10 +48,10 @@ function Clock() {
 
     console.log(stringTime);
 
-    let formater1 = new Intl.DateTimeFormat("ru-Ru", {
+    let formater1 = new Intl.DateTimeFormat("en-US", {
         weekday: "long",
     });
-    let formater2 = new Intl.DateTimeFormat("ru-Ru", {
+    let formater2 = new Intl.DateTimeFormat("en-US", {
         month: "long",
     });
     let formater3 = new Intl.DateTimeFormat("en", {
