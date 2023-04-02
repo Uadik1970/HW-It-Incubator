@@ -10,7 +10,7 @@ import { Slider, SliderProps } from '@mui/material'
 // }
 
 const SuperRange: React.FC<SliderProps> = (props) => {
-    console.log(props);
+
 
     return (
 
