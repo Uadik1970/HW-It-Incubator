@@ -13,9 +13,9 @@ import { StateType, changeThemeId } from './bll/themeReducer'
 * */
 
 const themes = [
-    { id: 1, value: 'light' },
-    { id: 2, value: 'blue' },
-    { id: 3, value: 'dark' },
+    { id: '1', value: 'light' },
+    { id: '2', value: 'blue' },
+    { id: '3', value: 'dark' },
 ]
 
 const HW12 = () => {
@@ -24,7 +24,7 @@ const HW12 = () => {
     const themeId = useSelector<StateType>(state => state.themeId)
     const dispatch = useDispatch()
 
-    const change = (id: number) => { // дописать функцию
+    const change = (id: string) => { // дописать функцию
         dispatch(changeThemeId(id))
     }
 
