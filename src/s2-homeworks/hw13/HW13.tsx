@@ -43,11 +43,13 @@ const HW13 = () => {
             .catch((err) => {
                 // дописать
                 setInfo('')
+                console.log(err)
                 switch (err.response.status) {
                     case 400: {
 
                         // setInfo(err.data.info)
                         setCode('Код 400!')
+
                         setImage(error400)
                         // console.log(err.response.data.errorText);
                         // console.log(err.response.data.info);
@@ -57,16 +59,27 @@ const HW13 = () => {
                     }
                         break
                     case 500: {
+                        console.log(err.response.status)
                         setCode('Код 500!')
                         setImage(error500)
                         setInfo(err.response.data.info)
                         setText(err.response.data.errorText)
                     } break
+                    // case 0: {
+                    //     setCode('Error!')
+                    //     setImage(errorUnknown)
+                    //     setInfo(err.response.data.info)
+                    //     setText(err.response.data.errorText)
+                    // }
                     default:
+
+
                         setCode('ERROR!')
                         setImage(errorUnknown)
-                        setInfo(err.response.data.info)
-                        setText(err.response.data.errorText)
+                        // setInfo("AxiosError")
+                        // setText("Network Error")
+                        setText(err.message)
+                        setInfo(err.name)
                 }
             })
     }
