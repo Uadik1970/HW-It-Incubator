@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import s2 from '../../s1-main/App.module.css'
 import s from './HW13.module.css'
 import SuperButton from '../hw04/common/c2-SuperButton/SuperButton'
@@ -32,19 +32,46 @@ const HW13 = () => {
         setInfo('...loading')
 
         axios
-            .post(url, {success: x})
+            .post(url, { success: x })
             .then((res) => {
                 setCode('Код 200!')
                 setImage(success200)
                 // дописать
-
+                setText(res.data.errorText)
+                setInfo(res.data.info)
             })
-            .catch((e) => {
+            .catch((err) => {
                 // дописать
+                setInfo('')
+                switch (err.response.status) {
+                    case 400: {
 
+                        // setInfo(err.data.info)
+                        setCode('Код 400!')
+                        setImage(error400)
+                        // console.log(err.response.data.errorText);
+                        // console.log(err.response.data.info);
+
+                        setInfo(err.response.data.info)
+                        setText(err.response.data.errorText)
+                    }
+                        break
+                    case 500: {
+                        setCode('Код 500!')
+                        setImage(error500)
+                        setInfo(err.response.data.info)
+                        setText(err.response.data.errorText)
+                    } break
+                    default:
+                        setCode('ERROR!')
+                        setImage(errorUnknown)
+                        setInfo(err.response.data.info)
+                        setText(err.response.data.errorText)
+                }
             })
     }
 
+    const isLoading = '...loading'
     return (
         <div id={'hw13'}>
             <div className={s2.hwTitle}>Homework #13</div>
@@ -56,7 +83,7 @@ const HW13 = () => {
                         onClick={send(true)}
                         xType={'secondary'}
                         // дописать
-
+                        disabled={info === isLoading}
                     >
                         Send true
                     </SuperButton>
@@ -65,6 +92,7 @@ const HW13 = () => {
                         onClick={send(false)}
                         xType={'secondary'}
                         // дописать
+                        disabled={info === isLoading}
 
                     >
                         Send false
@@ -74,7 +102,7 @@ const HW13 = () => {
                         onClick={send(undefined)}
                         xType={'secondary'}
                         // дописать
-
+                        disabled={info === isLoading}
                     >
                         Send undefined
                     </SuperButton>
@@ -83,7 +111,7 @@ const HW13 = () => {
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
                         // дописать
-
+                        disabled={info === isLoading}
                     >
                         Send null
                     </SuperButton>
@@ -91,7 +119,7 @@ const HW13 = () => {
 
                 <div className={s.responseContainer}>
                     <div className={s.imageContainer}>
-                        {image && <img src={image} className={s.image} alt="status"/>}
+                        {image && <img src={image} className={s.image} alt="status" />}
                     </div>
 
                     <div className={s.textContainer}>
