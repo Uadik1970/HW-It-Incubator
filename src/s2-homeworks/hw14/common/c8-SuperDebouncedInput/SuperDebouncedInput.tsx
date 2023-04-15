@@ -1,4 +1,4 @@
-import React, {DetailedHTMLProps, InputHTMLAttributes, ReactNode, useState} from 'react'
+import React, { DetailedHTMLProps, InputHTMLAttributes, ReactNode, useEffect, useState } from 'react'
 import SuperInputText from '../../../hw04/common/c1-SuperInputText/SuperInputText'
 
 // тип пропсов обычного инпута
@@ -15,8 +15,8 @@ export type SuperDebouncedInputPropsType = Omit<DefaultInputPropsType, 'type'> &
     spanClassName?: string
 } // илм экспортировать тип SuperInputTextPropsType
     & { // плюс специальный пропс SuperPagination
-    onDebouncedChange?: (value: string) => void
-}
+        onDebouncedChange?: (value: string) => void
+    }
 
 const SuperDebouncedInput: React.FC<SuperDebouncedInputPropsType> = (
     {
@@ -26,23 +26,24 @@ const SuperDebouncedInput: React.FC<SuperDebouncedInputPropsType> = (
         ...restProps // все остальные пропсы попадут в объект restProps
     }
 ) => {
-    const [timerId, setTimerId] = useState<number | undefined>(undefined)
+    const [timerId, setTimerId] = useState<any>(undefined)
 
     const onChangeTextCallback = (value: string) => {
         onChangeText?.(value)
 
         if (onDebouncedChange) {
             // делает студент
-
+            clearTimeout(timerId)
             // остановить предыдущий таймер
             // запустить новый на 1500ms, в котором вызовется функция
-
+            const idtimer = setTimeout(() => onDebouncedChange(value), 1500);
             //
+            setTimerId(+idtimer)
         }
     }
 
     return (
-        <SuperInputText onChangeText={onChangeTextCallback} {...restProps}/>
+        <SuperInputText onChangeText={onChangeTextCallback} {...restProps} />
     )
 }
 
