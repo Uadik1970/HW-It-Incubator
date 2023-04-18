@@ -57,7 +57,7 @@ const HW14 = () => {
         const params = Object.fromEntries(searchParams)
         sendQuery(params.find || '')
         setFind(params.find || '')
-        console.log(searchParams);
+
 
     }, [])
 
