@@ -43,12 +43,12 @@ const SuperSort: React.FC<SuperSortPropsType> = (
             onClick={onChangeCallback}
         >
             {/*сделать иконку*/}
-            <img
+            {/* <img
                 id={id + '-icon-' + sort}
                 src={icon}
-            />
+            /> */}
 
-            {/* {icon}  */}
+            {icon}
             {/*а это убрать*/}
         </span>
     )
