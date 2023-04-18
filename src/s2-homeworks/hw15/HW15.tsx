@@ -28,6 +28,8 @@ type ParamsType = {
 }
 
 const getTechs = (params: ParamsType) => {
+    // console.log(params);
+
     return axios
         .get<{ techs: TechType[], totalCount: number }>(
 
@@ -76,7 +78,8 @@ const HW15 = () => {
         setPage(newPage)
         setCount(newCount)
 
-        sendQuery({ page: newPage, count: newCount })
+
+        sendQuery({ page: newPage, count: newCount, sort: sort })
         setSearchParams({ page: `${newPage}`, count: `${newCount}` })
 
 
@@ -85,11 +88,11 @@ const HW15 = () => {
 
     const onChangeSort = (newSort: string) => {
         // делает студент
-        console.log(newSort);
+        // console.log(newSort);
 
         setSort(newSort)
         setPage(1) // при сортировке сбрасывать на 1 страницу
-        sendQuery({ page: page, count: count })
+        sendQuery({ page: page, count: count, sort: newSort })
         // sendQuery(
         // setSearchParams(
         setSearchParams({ page: `${page}`, count: `${count}` })
@@ -99,10 +102,12 @@ const HW15 = () => {
 
     useEffect(() => {
         const params = Object.fromEntries(searchParams)
-        sendQuery({ page: params.page, count: params.count })
+        // console.log(params);
+
+        sendQuery({ page: params.page, count: params.count, sort: sort })
         setPage(+params.page || 1)
         setCount(+params.count || 4)
-    }, [])
+    }, [sort])
 
     const mappedTechs = techs.map(t => (
         <div key={t.id} className={s.row}>
